@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EngageOne&reg; Converse Web Chat Client Example</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="chatcontainer" class="chat-container"></div>
+    <script src="https://webclient.converse.engageone.co/loader.min.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const docId = decodeURIComponent(params.get('docId'));
+      const section = decodeURIComponent(params.get('section'));
+      console.log(`docId: ${docId}`);
+      console.log(`section: ${section}`);
+      converseChatLoader({
+        host: 'wss://chatws.us-east-1.converse.engageone.co',
+        converseHost: 'https://chatrunner.us-east-1.converse.engageone.co',
+        serverUserImage: 'https://webclient.converse.engageone.co/eo-square-mark.png',
+        tenant: 'sa53271',
+        botId: 'test,test',
+        placeholder: 'Type a message...',
+        chatBotBaseUrl: 'https://webclient.converse.engageone.co',
+        startPhrase: 'start',
+        user: { docId, section },
+        showCloseButton: true
+      });
+    </script>
+  </body>
+</html>
